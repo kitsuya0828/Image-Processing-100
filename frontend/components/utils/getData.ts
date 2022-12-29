@@ -11,7 +11,7 @@ export async function postData(endpoint: string, file: FormData) {
       }
     })
     .then((response) => {
-        console.log(response)
+        // console.log(response)
         return response
     });
     return result.data

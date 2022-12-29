@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, createStyles } from "@mantine/core";
 import { TablerIcon, IconCalendarStats, IconChevronLeft, IconChevronRight } from "@tabler/icons";
 import Link from "next/link";
