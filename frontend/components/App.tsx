@@ -1,7 +1,5 @@
-import { ActionIcon, Button, Loader, Stack, TextInput } from "@mantine/core";
-import axios from "axios";
-import React, { useState } from "react";
-import { IconSquareRoundedX } from "@tabler/icons";
+import { Stack } from "@mantine/core";
+import React from "react";
 import { ImageDropzone } from "./ImageDropzone";
 
 import { NavbarNested } from "./pages/Navbar";
@@ -11,7 +9,7 @@ import { Info } from "./Info";
 import { useMediaQuery } from "@mantine/hooks";
 
 export const App = () => {
-  const sm = useMediaQuery('(min-width: 768px)')
+  const sm = useMediaQuery("(min-width: 768px)");
 
   return (
     <AppShell

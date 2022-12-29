@@ -132,7 +132,7 @@ export const NavbarNested = () => {
       <Navbar.Section className={classes.header}>
         <Group position="apart">
           <Title size={30} variant="gradient" gradient={{ from: "indigo", to: "cyan", deg: 45 }}>
-            Image Processing Question 100
+            Image Processing 100 Questions
           </Title>
         </Group>
       </Navbar.Section>
