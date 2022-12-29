@@ -1,5 +1,4 @@
 import axios from "axios";
-import {encode, decode} from 'node-base64-image';
 
 const baseUrl = "http://localhost:8000/";
 
