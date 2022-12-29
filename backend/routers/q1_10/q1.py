@@ -5,7 +5,7 @@ import cv2
 import datetime
 
 sample_path = "../../../db/sample/imori_256x256.png"
-db_path = "../../../db/"
+db_path = "../frontend/public/db/"
 
 
 def rgb2bgr(img):

@@ -8,13 +8,14 @@ import { postData } from "./utils/getData";
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   const [files, setFiles] = useState<FileWithPath[]>([]);
   const theme = useMantineTheme();
+  const [url, setUrl] = useState("");
 
   const previews = files.map((file, index) => {
     const imageUrl = URL.createObjectURL(file);
     return (
       <Image
         key={index}
-        src={imageUrl}
+        src={url ? url : imageUrl}
         imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
       />
     );
@@ -25,7 +26,8 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
       const data = new FormData();
       data.append("fileb", files[0]);
       const endpoint = "solve/q1";
-      await postData(endpoint, data);
+      const response = await postData(endpoint, data);
+      setUrl("/db/" + response.path);
     }
   };
 
