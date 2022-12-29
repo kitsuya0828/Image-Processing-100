@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, createStyles } from "@mantine/core";
 import { TablerIcon, IconCalendarStats, IconChevronLeft, IconChevronRight } from "@tabler/icons";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -54,15 +56,19 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
-    <Text<"a">
-      component="a"
-      className={classes.link}
-      href={link.link}
+    <Link
+      href={{
+        pathname: "[q]",
+        query: { q: link.link },
+      }}
       key={link.label}
-      onClick={(event) => event.preventDefault()}
+      className={classes.link}
     >
-      {link.label}
-    </Text>
+      <Text
+      >
+        {`${link.link.toString()}. ${link.label}`}
+      </Text>
+    </Link>
   ));
 
   return (

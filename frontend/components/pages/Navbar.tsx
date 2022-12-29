@@ -1,6 +1,4 @@
 import {
-  ActionIcon,
-  Anchor,
   Code,
   createStyles,
   Group,
@@ -9,7 +7,6 @@ import {
   Title,
   UnstyledButton,
   Text,
-  Button,
 } from "@mantine/core";
 import {
   IconNotes,
@@ -22,9 +19,14 @@ import {
   IconBrandGithub,
 } from "@tabler/icons";
 import { LinksGroup } from "./NavbarLinksGroup";
+import { titleJa } from "../Info";
 
 const mockdata = [
-  { label: "問題1-10", icon: IconGauge },
+  {
+    label: "問題1-10",
+    icon: IconGauge,
+    links: [...Array(10)].map((_, num) => ({ label: titleJa[num], link: (num + 1).toString() })),
+  },
   {
     label: "問題11-20",
     icon: IconNotes,
@@ -126,7 +128,7 @@ export const NavbarNested = () => {
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
-    <Navbar width={{ sm: 300 }} p="md" className={classes.navbar}>
+    <Navbar width={{ sm: 250 }} p="md" className={classes.navbar}>
       <Navbar.Section className={classes.header}>
         <Group position="apart">
           <Title size={30} variant="gradient" gradient={{ from: "indigo", to: "cyan", deg: 45 }}>

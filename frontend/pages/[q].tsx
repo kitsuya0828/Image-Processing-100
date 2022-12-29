@@ -10,9 +10,8 @@ export default function Home() {
   const router = useRouter();
   const queryNumber = parseInt(router.query.q as string, 10)
 
-  const { questionNumber, setQuestionNumber } = useUserStore(
+  const { setQuestionNumber } = useUserStore(
     (state) => ({
-      questionNumber: state.questionNumber,
       setQuestionNumber: state.setQuestionNumber,
     }),
     shallow

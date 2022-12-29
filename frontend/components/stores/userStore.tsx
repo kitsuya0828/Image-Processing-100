@@ -1,5 +1,4 @@
 import create from "zustand";
-import { devtools } from "zustand/middleware";
 
 interface UserState {
     questionNumber: number;
@@ -7,7 +6,7 @@ interface UserState {
 }
 
 export const useUserStore = create<UserState>((set) => ({
-  questionNumber: 0,
+  questionNumber: 1,
   setQuestionNumber: (x: number) =>
     set((state) => ({
       ...state,
