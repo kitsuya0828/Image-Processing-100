@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 import cv2
 import datetime
 
-sample_path = "../../../db/sample/imori_256x256.png"
 db_path = "../frontend/public/db/"
 
 
 def rgb2bgr(img):
-    return img[..., ::-1]
+    return img[..., [2, 1, 0]]
 
 
 def solve(file_path, save=True):
-    img_orig = cv2.imread(file_path, cv2.COLOR_BGR2RGB)
-    img_bgr = rgb2bgr(img_orig)
+    img_cv2 = cv2.imread(file_path)
+    img = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
+    img_bgr = rgb2bgr(img)
 
     if save:
         dt_now = datetime.datetime.now()
@@ -22,17 +22,18 @@ def solve(file_path, save=True):
         cv2.imwrite(db_path + save_path, img_bgr)
         return {"path": save_path}
     else:
-        return [img_orig, img_bgr]
+        return [img, img_bgr]
 
 
 if __name__ == "__main__":
-    img_orig, img_bgr = solve(sample_path, save=False)
+    img, img_bgr = solve(
+        "../../../frontend/public/db/sample/imori.png", save=False)
 
     plt.figure(figsize=(12, 3))
     plt.subplot(1, 2, 1)
     plt.title('input')
-    plt.imshow(img_orig)
+    plt.imshow(img)
     plt.subplot(1, 2, 2)
-    plt.title('answer')
+    plt.title('output')
     plt.imshow(img_bgr)
     plt.show()
