@@ -65,7 +65,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
     >
       <Text
       >
-        {`${link.link.toString()}. ${link.label}`}
+        {`${link.link}. ${link.label}`}
       </Text>
     </Link>
   ));

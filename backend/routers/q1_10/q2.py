@@ -1,18 +1,22 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
-from PIL import Image
 import datetime
+from PIL import Image
 
 
-def rgb2bgr(img: np.ndarray):
-    return img[..., [2, 1, 0]]
+def bgr2gray(img: np.ndarray):
+    b = img[:, :, 0].copy()
+    g = img[:, :, 1].copy()
+    r = img[:, :, 2].copy()
+    y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return y.astype(np.uint8)
 
 
 def solve(file_path: str, save_dir: str = "../frontend/public/db/"):
     img = cv2.imread(file_path)
 
-    img_result = rgb2bgr(img)
+    img_result = bgr2gray(img)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S')}.jpg"
@@ -36,5 +40,5 @@ if __name__ == "__main__":
     plt.title('output')
     result_image = Image.open(result_path)
     result_array = np.asarray(result_image)
-    plt.imshow(result_array)
+    plt.imshow(result_array, cmap="gray")
     plt.show()

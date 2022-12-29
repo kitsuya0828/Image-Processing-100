@@ -1,6 +1,6 @@
 import { Text, useMantineTheme, Image, SimpleGrid, Stack } from "@mantine/core";
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, FileWithPath } from "@mantine/dropzone";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postData } from "./utils/getData";
 import { useUserStore } from "./stores/userStore";
 import shallow from "zustand/shallow";
@@ -17,6 +17,12 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
 
   const [beforeUrl, setBeforeUrl] = useState("/db/sample/imori_256x256.png");
   const [afterUrl, setAfterUrl] = useState(`/db/sample/q${questionNumber}.jpg`);
+
+  useEffect(() => {
+    setBeforeUrl("/db/sample/imori_256x256.png");
+    setAfterUrl(`/db/sample/q${questionNumber}.jpg`);
+  }, [questionNumber]);
+
   const endpoint = `solve/q${questionNumber}`;
 
   const onSubmitImage = async (droppedFiles: FileWithPath[], endpoint: string) => {

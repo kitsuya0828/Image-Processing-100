@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-import routers.router as router_q1_10
+import router
 
 
 app = FastAPI()
@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 
-app.include_router(router_q1_10.router)
+app.include_router(router.router)
 
 
 @app.get("/")

@@ -6,8 +6,7 @@ import shutil
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from .q1_10.q1 import solve
-
+import routers
 
 def process_image(fileb, func):
     try:
@@ -31,5 +30,10 @@ router = APIRouter()
 
 @router.post("/solve/q1", tags=["solve"])
 async def solve_q1(fileb: UploadFile = File(...)):
-    json_compatible_results = process_image(fileb, solve)
+    json_compatible_results = process_image(fileb, routers.solve_q1)
+    return JSONResponse(content=json_compatible_results)
+
+@router.post("/solve/q2", tags=["solve"])
+async def solve_q2(fileb: UploadFile = File(...)):
+    json_compatible_results = process_image(fileb, routers.solve_q2)
     return JSONResponse(content=json_compatible_results)
