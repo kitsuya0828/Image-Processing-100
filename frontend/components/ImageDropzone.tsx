@@ -15,11 +15,11 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
     shallow
   );
 
-  const [beforeUrl, setBeforeUrl] = useState("/db/sample/imori_256x256.png");
+  const [beforeUrl, setBeforeUrl] = useState("/db/sample/imori.png");
   const [afterUrl, setAfterUrl] = useState(`/db/sample/q${questionNumber}.jpg`);
 
   useEffect(() => {
-    setBeforeUrl("/db/sample/imori_256x256.png");
+    setBeforeUrl("/db/sample/imori.png");
     setAfterUrl(`/db/sample/q${questionNumber}.jpg`);
   }, [questionNumber]);
 

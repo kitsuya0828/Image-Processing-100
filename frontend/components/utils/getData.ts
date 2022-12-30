@@ -16,3 +16,9 @@ export async function postData(endpoint: string, file: FormData) {
     });
     return result.data
 }
+
+export async function getCode(endpoint: string) {
+  const url = baseUrl + endpoint;
+  const result = await axios.get(url)
+  return result.data
+}
