@@ -1,4 +1,4 @@
-import { Text, useMantineTheme, Image, SimpleGrid, Stack } from "@mantine/core";
+import { Text, useMantineTheme, Image, SimpleGrid, Stack, LoadingOverlay } from "@mantine/core";
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, FileWithPath } from "@mantine/dropzone";
 import { useEffect, useState } from "react";
 import { postData } from "./utils/getData";
@@ -17,6 +17,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
 
   const [beforeUrl, setBeforeUrl] = useState("/db/sample/imori.png");
   const [afterUrl, setAfterUrl] = useState(`/db/sample/q${questionNumber}.jpg`);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setBeforeUrl("/db/sample/imori.png");
@@ -27,6 +28,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
 
   const onSubmitImage = async (droppedFiles: FileWithPath[], endpoint: string) => {
     if (droppedFiles.length) {
+      setLoading(true);
       const imageUrl = URL.createObjectURL(droppedFiles[0]);
       setBeforeUrl(imageUrl);
 
@@ -37,6 +39,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
       if (response.status == 1) {
         setAfterUrl("/db/" + response.path);
       }
+      setLoading(false);
     }
   };
 
@@ -55,7 +58,11 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
         </Text>
         <SimpleGrid cols={2}>
           <Image radius="md" src={beforeUrl} caption="Before" />
-          <Image radius="md" src={afterUrl} caption="After" />
+          {loading ? (
+            <LoadingOverlay transitionDuration={500} visible={true} />
+          ) : (
+            <Image radius="md" src={afterUrl} caption="After" />
+          )}
         </SimpleGrid>
       </Stack>
     </Dropzone>
