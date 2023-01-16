@@ -1,4 +1,4 @@
-name: Action Sample
+name: My Actions
 
 on:
   push:
@@ -7,8 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  print-hello-world:
+  job_main:
     runs-on: ubuntu-latest
     steps:
-      - name: execute echo command
-        run: echo "Hello World!"
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    run: yarn install
+    run: yarn build
+    working-directory: ./frontend
