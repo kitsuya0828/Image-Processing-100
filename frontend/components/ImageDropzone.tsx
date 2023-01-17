@@ -15,13 +15,13 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
     shallow
   );
 
-  const [beforeUrl, setBeforeUrl] = useState("/db/sample/imori.png");
-  const [afterUrl, setAfterUrl] = useState(`/db/sample/q${questionNumber}.jpg`);
+  const [beforeUrl, setBeforeUrl] = useState("");
+  const [afterUrl, setAfterUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setBeforeUrl("/db/sample/imori.png");
-    setAfterUrl(`/db/sample/q${questionNumber}.jpg`);
+    setBeforeUrl("http://127.0.0.1:8000/files/sample/imori.png");
+    setAfterUrl(`http://127.0.0.1:8000/files/sample/q${questionNumber}.jpg`);
   }, [questionNumber]);
 
   const endpoint = `solve/q${questionNumber}`;
@@ -37,7 +37,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
       const response = await postData(endpoint, data);
 
       if (response.status == 1) {
-        setAfterUrl("/db/" + response.path);
+        setAfterUrl("http://127.0.0.1:8000/files/" + response.path);
       }
       setLoading(false);
     }
@@ -57,11 +57,11 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
           Drag an image here or click to select a file
         </Text>
         <SimpleGrid cols={2}>
-          <Image radius="md" src={beforeUrl} caption="Before" />
+          <Image radius="md" src={beforeUrl} caption="Before" alt="Before" />
           {loading ? (
             <LoadingOverlay transitionDuration={500} visible={true} />
           ) : (
-            <Image radius="md" src={afterUrl} caption="After" />
+            <Image radius="md" src={afterUrl} caption="After" alt="After" />
           )}
         </SimpleGrid>
       </Stack>

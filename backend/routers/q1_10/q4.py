@@ -36,7 +36,7 @@ def otsu_binarize(img: np.ndarray):
     return img
 
 
-def solve(file_path: str, save_dir: str = "../frontend/public/db/"):
+def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
     img_result = bgr2gray(img)
@@ -49,8 +49,8 @@ def solve(file_path: str, save_dir: str = "../frontend/public/db/"):
 
 
 if __name__ == "__main__":
-    sample_path = "../../../frontend/public/db/sample/imori.png"
-    save_dir = "../../../frontend/public/db/"
+    sample_path = "../../files/sample/imori.png"
+    save_dir = "../../files/"
     result_path = save_dir + solve(sample_path, save_dir)["path"]
 
     plt.figure(figsize=(12, 3))
