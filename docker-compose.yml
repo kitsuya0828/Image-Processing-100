@@ -1,16 +1,14 @@
 version: "3.8"
 services:
-  # frontend:
-  #   build:
-  #     context: .
-  #     dockerfile: ./frontend/Dockerfile
-  #   container_name: front_react
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./frontend/ :/client
-  #   tty: true
-  #   command: yarn dev
+  frontend:
+    build: ./frontend
+    container_name: front_react
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/:/frontend
+    tty: true
+    command: yarn dev
 
   backend:
     build: ./backend
@@ -18,4 +16,4 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./backend:/server
+      - ./backend:/backend

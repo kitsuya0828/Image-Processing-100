@@ -1,5 +1,5 @@
-FROM node:16-bullseye-slim
-WORKDIR /client
-COPY /frontend/package.json ./
-COPY /frontend/yarn.lock ./
+FROM node:18-bullseye-slim
+WORKDIR /frontend
+COPY package.json ./
+COPY yarn.lock ./
 RUN yarn install
