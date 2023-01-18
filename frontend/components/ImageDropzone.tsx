@@ -5,6 +5,8 @@ import { postData } from "./utils/getData";
 import { useUserStore } from "./stores/userStore";
 import shallow from "zustand/shallow";
 
+const url = 'http://127.0.0.1:8000/files/';
+
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   const theme = useMantineTheme();
 
@@ -20,8 +22,12 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setBeforeUrl("http://127.0.0.1:8000/files/sample/imori.png");
-    setAfterUrl(`http://127.0.0.1:8000/files/sample/q${questionNumber}.jpg`);
+    if ([9, 10].includes(questionNumber)) {
+      setBeforeUrl(`${url}sample/imori_noise.jpeg`);
+    } else {
+      setBeforeUrl(`${url}sample/imori.jpeg`);
+    }
+    setAfterUrl(`${url}sample/q${questionNumber}.jpg`);
   }, [questionNumber]);
 
   const endpoint = `solve/q${questionNumber}`;
@@ -37,7 +43,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
       const response = await postData(endpoint, data);
 
       if (response.status == 1) {
-        setAfterUrl("http://127.0.0.1:8000/files/" + response.path);
+        setAfterUrl(url + response.path);
       }
       setLoading(false);
     }
