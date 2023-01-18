@@ -4,3 +4,4 @@ from routers.q1_10.q3 import solve as solve_q3
 from routers.q1_10.q4 import solve as solve_q4
 
 from routers.q1_10.q9 import solve as solve_q9
+from routers.q1_10.q10 import solve as solve_q10

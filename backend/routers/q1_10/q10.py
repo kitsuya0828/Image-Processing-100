@@ -5,7 +5,7 @@ import datetime
 from PIL import Image
 
 
-def gaussian_filter(img: np.ndarray, kernel_size: int=3, sigma: float=1.3):
+def gaussian_filter(img: np.ndarray, kernel_size: int=3):
 	if len(img.shape) == 3:
 		H, W, C = img.shape
 	else:
@@ -18,22 +18,14 @@ def gaussian_filter(img: np.ndarray, kernel_size: int=3, sigma: float=1.3):
 	out = np.zeros((H + pad * 2, W + pad * 2, C), dtype=np.float32)
 	out[pad: pad + H, pad: pad + W] = img.copy().astype(np.float32)
 
-	# カーネル
-	kernel = np.zeros((kernel_size, kernel_size), dtype=np.float32)
-	for x in range(-pad, -pad + kernel_size):
-		for y in range(-pad, -pad + kernel_size):
-			kernel[y + pad, x + pad] = np.exp( -(x ** 2 + y ** 2) / (2 * (sigma ** 2))) / (2 * np.pi * sigma * sigma)
-	kernel /= kernel.sum()  # 正規化
-
 	tmp_out = out.copy()
 
 	# フィルタリング
 	for y in range(H):
 		for x in range(W):
 			for c in range(C):
-				out[pad + y, pad + x, c] = np.sum(kernel * tmp_out[y: y + kernel_size, x: x + kernel_size, c])
+				out[pad + y, pad + x, c] = np.median(tmp_out[y: y + kernel_size, x: x + kernel_size, c])
 
-	out = np.clip(out, 0, 255)
 	out = out[pad: pad + H, pad: pad + W].astype(np.uint8)
 
 	return out
