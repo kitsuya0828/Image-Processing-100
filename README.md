@@ -1,18 +1,26 @@
 # Image Processing 100 Questions
 
-## Backend
-```bash
-python -m venv venv
-pip install requirements.txt
-```
 
+
+## Docker (Frontend + Backend)
 ```bash
-. venv/bin/activate
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+docker-compose up
 ```
+Then, visit the following url: http://localhost:3000
 
 ## Frontend
 ```bash
+cd frontend
 yarn install
 yarn dev
+```
+
+## Backend
+```bash
+cd backend
+python -m venv venv
+. venv/bin/activate
+
+pip install requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
