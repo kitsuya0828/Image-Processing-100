@@ -6,13 +6,16 @@ My solution to [ryoppippi/Gasyori100knock](https://github.com/ryoppippi/Gasyori1
 
 
 
-## Docker (Frontend + Backend)
+# Docker (Frontend + Backend)
+[![Frontend](https://skillicons.dev/icons?i=docker)](https://skillicons.dev)
 ```bash
 docker-compose up
 ```
 Then, visit the following url: http://localhost:3000
 
+# Non-Docker
 ## Frontend
+[![Frontend](https://skillicons.dev/icons?i=react,ts,next,)](https://skillicons.dev)
 ```bash
 cd frontend
 yarn install
@@ -20,6 +23,7 @@ yarn dev
 ```
 
 ## Backend
+[![My Skills](https://skillicons.dev/icons?i=python,fastapi)](https://skillicons.dev)
 ```bash
 cd backend
 python -m venv venv
