@@ -6,7 +6,7 @@ import { useUserStore } from "./stores/userStore";
 import shallow from "zustand/shallow";
 
 const url = "http://127.0.0.1:8000/files/";
-const switchableQuestionNumbers = [14];
+const switchableQuestionNumbers = [14, 15, 16];
 
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   const theme = useMantineTheme();

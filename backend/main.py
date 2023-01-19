@@ -32,7 +32,7 @@ app.include_router(router.router)
 @app.get("/code/q{number}")
 def get_code(number: int):
     try:
-        file_path = f'./routers/q{number//10+1}_{number//10+10}/q{number}.py'
+        file_path = f'./routers/q{number//10*10+1}_{number//10*10+10}/q{number}.py'
         with open(file_path, 'r', encoding='UTF-8') as f:
             data = f.read()
             result: dict = {"code": data}
