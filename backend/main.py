@@ -28,6 +28,7 @@ app.mount('/files', StaticFiles(directory="files"), name='files')
 
 app.include_router(router.router)
 
+
 @app.get("/code/q{number}")
 def get_code(number: int):
     try:
@@ -42,7 +43,7 @@ def get_code(number: int):
             "message": e
         }
     return JSONResponse(jsonable_encoder(result))
- 
+
 
 @app.get("/")
 def Hello():

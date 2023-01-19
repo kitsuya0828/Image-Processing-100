@@ -58,5 +58,5 @@ if __name__ == "__main__":
     plt.title('output')
     result_image = Image.open(result_path)
     result_array = np.asarray(result_image)
-    plt.imshow(result_array, cmap="gray")
+    plt.imshow(result_array)
     plt.show()

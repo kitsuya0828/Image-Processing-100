@@ -28,10 +28,12 @@ export const Explanation = () => {
       }
       setUrl(
         `https://github.com/Kitsuya0828/Image-Processing-100/blob/main/backend/routers/
-          q${questionNumber / 10 + 1}_${questionNumber / 10 + 10}/q${questionNumber}.py`
+          q${Math.floor(questionNumber / 10) * 10 + 1}_${
+          Math.floor(questionNumber / 10) * 10 + 10
+        }/q${questionNumber}.py`
       );
     })();
-  }, [opened]);
+  }, [opened, questionNumber]);
 
   return (
     <>

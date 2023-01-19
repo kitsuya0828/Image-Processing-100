@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export default function Home() {
 
   const router = useRouter();
-  const queryNumber = parseInt(router.query.q as string, 10)
+  const queryNumber = parseInt(router.query.q as string, 10);
 
   const { setQuestionNumber } = useUserStore(
     (state) => ({
@@ -19,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     setQuestionNumber(queryNumber);
-  }, [queryNumber])
+  }, [queryNumber, setQuestionNumber])
 
   return (
     <>

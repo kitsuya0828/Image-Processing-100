@@ -29,14 +29,11 @@ const mockdata = [
   },
   {
     label: "問題11-20",
-    icon: IconNotes,
-    // initiallyOpened: true,
-    links: [
-      { label: "Overview", link: "/" },
-      { label: "Forecasts", link: "/" },
-      { label: "Outlook", link: "/" },
-      { label: "Real time", link: "/" },
-    ],
+    icon: IconGauge,
+    links: [...Array(10)].map((_, num) => ({
+      label: titleJa[num + 10],
+      link: (num + 11).toString(),
+    })),
   },
   {
     label: "問題21-30",

@@ -5,7 +5,8 @@ import { postData } from "./utils/getData";
 import { useUserStore } from "./stores/userStore";
 import shallow from "zustand/shallow";
 
-const url = 'http://127.0.0.1:8000/files/';
+const url = "http://127.0.0.1:8000/files/";
+const switchableQuestionNumbers = [14];
 
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   const theme = useMantineTheme();
@@ -17,6 +18,8 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
     shallow
   );
 
+  const isSwitchable = switchableQuestionNumbers.includes(questionNumber);
+
   const [beforeUrl, setBeforeUrl] = useState("");
   const [afterUrl, setAfterUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,8 +30,8 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
     } else {
       setBeforeUrl(`${url}sample/imori.jpeg`);
     }
-    setAfterUrl(`${url}sample/q${questionNumber}.jpg`);
-  }, [questionNumber]);
+    setAfterUrl(`${url}sample/q${questionNumber}${isSwitchable ? "_v" : ""}.jpg`);
+  }, [isSwitchable, questionNumber]);
 
   const endpoint = `solve/q${questionNumber}`;
 
@@ -62,12 +65,22 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
         <Text size="xs" color="dimmed" inline>
           Drag an image here or click to select a file
         </Text>
-        <SimpleGrid cols={2}>
+        <SimpleGrid cols={isSwitchable ? 3 : 2}>
           <Image radius="md" src={beforeUrl} caption="Before" alt="Before" />
           {loading ? (
             <LoadingOverlay transitionDuration={500} visible={true} />
+          ) : isSwitchable ? (
+            <>
+              <Image radius="md" src={afterUrl} caption="After (Vertical)" alt="After (Vertical)" />
+              <Image
+                radius="md"
+                src={afterUrl.replace("_v", "_h")}
+                caption="After (Horizontal)"
+                alt="After (Horizontal)"
+              />
+            </>
           ) : (
-            <Image radius="md" src={afterUrl} caption="After" alt="After" />
+            <Image radius="md" src={afterUrl} caption={<>After</>} alt="After" />
           )}
         </SimpleGrid>
       </Stack>

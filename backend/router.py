@@ -8,6 +8,7 @@ from tempfile import NamedTemporaryFile
 
 import routers
 
+
 def process_image(fileb, func):
     try:
         suffix = Path(fileb.filename).suffix
@@ -33,27 +34,44 @@ async def solve_q1(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q1)
     return JSONResponse(content=json_compatible_results)
 
+
 @router.post("/solve/q2", tags=["solve"])
 async def solve_q2(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q2)
     return JSONResponse(content=json_compatible_results)
+
 
 @router.post("/solve/q3", tags=["solve"])
 async def solve_q3(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q3)
     return JSONResponse(content=json_compatible_results)
 
+
 @router.post("/solve/q4", tags=["solve"])
 async def solve_q4(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q4)
     return JSONResponse(content=json_compatible_results)
+
 
 @router.post("/solve/q9", tags=["solve"])
 async def solve_q9(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q9)
     return JSONResponse(content=json_compatible_results)
 
+
 @router.post("/solve/q10", tags=["solve"])
 async def solve_q10(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q10)
+    return JSONResponse(content=json_compatible_results)
+
+
+@router.post("/solve/q11", tags=["solve"])
+async def solve_q10(fileb: UploadFile = File(...)):
+    json_compatible_results = process_image(fileb, routers.solve_q11)
+    return JSONResponse(content=json_compatible_results)
+
+
+@router.post("/solve/q14", tags=["solve"])
+async def solve_q14(fileb: UploadFile = File(...)):
+    json_compatible_results = process_image(fileb, routers.solve_q14)
     return JSONResponse(content=json_compatible_results)

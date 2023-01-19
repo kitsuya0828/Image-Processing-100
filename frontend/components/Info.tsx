@@ -23,6 +23,16 @@ export const titleEn = [
     "Max Pooling",
     "Gaussian Filter",
     "Median Filter",
+    "Smoothing Filter",
+    "Motion Filter",
+    "MAX_MIN Filter",
+    "Differential Filter",
+    "Sobel Filter",
+    "Prewitt Filter",
+    "Laplacian Filter",
+    "Emboss Filter",
+    "LoG Filter",
+    "Histogram Display"
 ];
 
 export const titleJa = [
@@ -36,6 +46,16 @@ export const titleJa = [
     "Maxプーリング",
     "ガウシアンフィルタ",
     "メディアンフィルタ",
+    "平滑化フィルタ",
+    "モーションフィルタ",
+    "MAX-MINフィルタ",
+    "微分フィルタ",
+    "Sobelフィルタ",
+    "Prewittフィルタ",
+    "Laplacianフィルタ",
+    "Embossフィルタ",
+    "LoGフィルタ",
+    "ヒストグラム表示",
 ];
 
 const urlJa = [
@@ -49,6 +69,16 @@ const urlJa = [
     "Question_01_10#q8-maxプーリング",
     "Question_01_10#q9-ガウシアンフィルタ",
     "Question_01_10#q10-メディアンフィルタ",
+    "Question_11_20#q11-平滑化フィルタ",
+    "Question_11_20#q12-モーションフィルタ",
+    "Question_11_20#q13-max-minフィルタ",
+    "Question_11_20#q14-微分フィルタ",
+    "Question_11_20#q15-sobelフィルタ",
+    "Question_11_20#q16-prewittフィルタ",
+    "Question_11_20#q17-laplacianフィルタ",
+    "Question_11_20#q18-embossフィルタ",
+    "Question_11_20#q19-logフィルタ",
+    "Question_11_20#q20-ヒストグラム表示",
 ];
 
 export const Info = () => {
