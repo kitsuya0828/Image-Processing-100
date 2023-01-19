@@ -1,5 +1,0 @@
-{
-    "pythonIndent.trimLinesWithOnlyWhitespace": true,
-    "prettier.useTabs": false,
-    "python.languageServer": "Pylance"
-}
