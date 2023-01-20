@@ -3,4 +3,4 @@ build:
     web: frontend/Dockerfile
     worker: backend/Dockerfile
 run:
-  web: yarn dev
+  web: yarn build && yarn start
