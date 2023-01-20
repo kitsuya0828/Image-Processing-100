@@ -4,3 +4,5 @@ WORKDIR /frontend
 # COPY yarn.lock ./
 COPY . ./
 RUN yarn install
+
+CMD ["yarn", "dev"]
