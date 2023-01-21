@@ -1,6 +1,6 @@
 build:
   docker:
     # web: frontend/Dockerfile
-    worker: backend/Dockerfile
+    web: backend/Dockerfile
 # run:
 #   web: yarn dev
