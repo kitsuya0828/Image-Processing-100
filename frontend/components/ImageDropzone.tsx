@@ -5,7 +5,7 @@ import { postData } from "./utils/getData";
 import { useUserStore } from "./stores/userStore";
 import shallow from "zustand/shallow";
 
-const url = "http://127.0.0.1:8000/files/";
+const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/`;
 const switchableQuestionNumbers = [14, 15, 16];
 
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {

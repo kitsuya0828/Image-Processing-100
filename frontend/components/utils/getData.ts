@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/";
+const baseUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/`;
 
 export async function postData(endpoint: string, file: FormData) {
   const url = baseUrl + endpoint;
