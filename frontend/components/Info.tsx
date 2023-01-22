@@ -32,7 +32,10 @@ export const titleEn = [
     "Laplacian Filter",
     "Emboss Filter",
     "LoG Filter",
-    "Histogram Display"
+    "Histogram Display",
+    "Histogram Normalization",
+    "Histogram Operation",
+    "Histogram Equalization",
 ];
 
 export const titleJa = [
@@ -56,6 +59,9 @@ export const titleJa = [
     "Embossフィルタ",
     "LoGフィルタ",
     "ヒストグラム表示",
+    "ヒストグラム正規化",
+    "ヒストグラム操作",
+    "ヒストグラム平坦化",
 ];
 
 const urlJa = [
@@ -79,6 +85,9 @@ const urlJa = [
     "Question_11_20#q18-embossフィルタ",
     "Question_11_20#q19-logフィルタ",
     "Question_11_20#q20-ヒストグラム表示",
+    "Question_21_30#q21-ヒストグラム正規化",
+    "Question_21_30#q22-ヒストグラム操作",
+    "Question_21_30#q23-ヒストグラム平坦化",
 ];
 
 export const Info = () => {

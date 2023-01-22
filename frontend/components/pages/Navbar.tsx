@@ -37,6 +37,14 @@ const mockdata = [
   },
   {
     label: "問題21-30",
+    icon: IconGauge,
+    links: [...Array(10)].map((_, num) => ({
+      label: titleJa[num + 20],
+      link: (num + 21).toString(),
+    })),
+  },
+  {
+    label: "問題31-40",
     icon: IconCalendarStats,
     links: [
       { label: "Upcoming releases", link: "/" },
@@ -44,7 +52,6 @@ const mockdata = [
       { label: "Releases schedule", link: "/" },
     ],
   },
-  { label: "問題31-40", icon: IconPresentationAnalytics },
   { label: "問題41-50", icon: IconFileAnalytics },
   { label: "問題51-60", icon: IconAdjustments },
   {
