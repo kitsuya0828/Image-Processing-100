@@ -5,15 +5,10 @@ services:
     container_name: front_react
     ports:
       - 3000:3000
-    # volumes:
-    #   - ./frontend/:/frontend
     tty: true
-    # command: yarn dev
 
   backend:
     build: ./backend
     container_name: back_fastapi
     ports:
       - 8000:8000
-    # volumes:
-    #   - ./backend:/backend
