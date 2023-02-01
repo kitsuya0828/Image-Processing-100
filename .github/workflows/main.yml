@@ -1,9 +1,11 @@
-name: My Actions
+name: Frontend Build
 
 on:
   push:
     branches: 
       - main
+    paths:
+      - 'frontend/**'
   workflow_dispatch:
 
 defaults:
