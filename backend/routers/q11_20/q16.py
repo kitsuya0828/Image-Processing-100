@@ -31,10 +31,8 @@ def prewitt_filter(img: np.ndarray, kernel_size: int = 3):
     # フィルタリング
     for y in range(H):
         for x in range(W):
-            out_v[pad + y, pad +
-                  x] = np.sum(kernel_v * out[y: y + kernel_size, x: x + kernel_size])
-            out_h[pad + y, pad +
-                  x] = np.sum(kernel_h * out[y: y + kernel_size, x: x + kernel_size])
+            out_v[pad + y, pad + x] = np.sum(kernel_v * out[y: y + kernel_size, x: x + kernel_size])
+            out_h[pad + y, pad + x] = np.sum(kernel_h * out[y: y + kernel_size, x: x + kernel_size])
 
     out_v = np.clip(out_v, 0, 255)
     out_h = np.clip(out_h, 0, 255)

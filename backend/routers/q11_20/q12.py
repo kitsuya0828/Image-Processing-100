@@ -5,12 +5,16 @@ import datetime
 from PIL import Image
 
 
-def mean_filter(img: np.ndarray, kernel_size: int = 3):
-    if len(img.shape) == 3:
-        H, W, C = img.shape
-    else:
-        img = np.expand_dims(img, axis=-1)
-        H, W, C = img.shape
+def bgr2gray(img: np.ndarray):
+    b = img[:, :, 0].copy()
+    g = img[:, :, 1].copy()
+    r = img[:, :, 2].copy()
+    y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return y.astype(np.uint8)
+
+
+def motion_filter(img: np.ndarray, kernel_size: int = 3):
+    H, W, C = img.shape
 
     # ゼロ埋め
     pad = kernel_size // 2
@@ -19,11 +23,14 @@ def mean_filter(img: np.ndarray, kernel_size: int = 3):
 
     tmp_out = out.copy()
 
+    # カーネル
+    kernel = np.array([[1/3, 0, 0], [0, 1/3, 0], [0, 0, 1/3]], dtype=np.float32)
+
     # フィルタリング
     for y in range(H):
         for x in range(W):
             for c in range(C):
-                out[pad + y, pad + x, c] = np.mean(tmp_out[y: y + kernel_size, x: x + kernel_size, c])
+                out[pad + y, pad + x, c] = np.sum(kernel * tmp_out[y: y + kernel_size, x: x + kernel_size, c])
 
     out = out[pad: pad + H, pad: pad + W].astype(np.uint8)
 
@@ -33,7 +40,7 @@ def mean_filter(img: np.ndarray, kernel_size: int = 3):
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = mean_filter(img)
+    img_result = motion_filter(img)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S')}.jpg"

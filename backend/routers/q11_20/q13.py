@@ -5,16 +5,20 @@ import datetime
 from PIL import Image
 
 
-def mean_filter(img: np.ndarray, kernel_size: int = 3):
-    if len(img.shape) == 3:
-        H, W, C = img.shape
-    else:
-        img = np.expand_dims(img, axis=-1)
-        H, W, C = img.shape
+def bgr2gray(img: np.ndarray):
+    b = img[:, :, 0].copy()
+    g = img[:, :, 1].copy()
+    r = img[:, :, 2].copy()
+    y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return y.astype(np.uint8)
+
+
+def max_min_filter(img: np.ndarray, kernel_size: int = 3):
+    H, W = img.shape
 
     # ゼロ埋め
     pad = kernel_size // 2
-    out = np.zeros((H + pad * 2, W + pad * 2, C), dtype=np.float32)
+    out = np.zeros((H + pad * 2, W + pad * 2), dtype=np.float32)
     out[pad: pad + H, pad: pad + W] = img.copy().astype(np.float32)
 
     tmp_out = out.copy()
@@ -22,8 +26,9 @@ def mean_filter(img: np.ndarray, kernel_size: int = 3):
     # フィルタリング
     for y in range(H):
         for x in range(W):
-            for c in range(C):
-                out[pad + y, pad + x, c] = np.mean(tmp_out[y: y + kernel_size, x: x + kernel_size, c])
+            maxi = np.max(tmp_out[y: y + kernel_size, x: x + kernel_size])
+            mini = np.min(tmp_out[y: y + kernel_size, x: x + kernel_size])
+            out[pad + y, pad + x] = maxi - mini
 
     out = out[pad: pad + H, pad: pad + W].astype(np.uint8)
 
@@ -33,7 +38,8 @@ def mean_filter(img: np.ndarray, kernel_size: int = 3):
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = mean_filter(img)
+    img = bgr2gray(img)
+    img_result = max_min_filter(img)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S')}.jpg"
@@ -57,5 +63,5 @@ if __name__ == "__main__":
     plt.title('output')
     result_image = Image.open(result_path)
     result_array = np.asarray(result_image)
-    plt.imshow(result_array)
+    plt.imshow(result_array, cmap='gray')
     plt.show()

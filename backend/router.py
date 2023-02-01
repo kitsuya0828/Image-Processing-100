@@ -71,6 +71,18 @@ async def solve_q10(fileb: UploadFile = File(...)):
     return JSONResponse(content=json_compatible_results)
 
 
+@router.post("/solve/q12", tags=["solve"])
+async def solve_q14(fileb: UploadFile = File(...)):
+    json_compatible_results = process_image(fileb, routers.solve_q12)
+    return JSONResponse(content=json_compatible_results)
+
+
+@router.post("/solve/q13", tags=["solve"])
+async def solve_q14(fileb: UploadFile = File(...)):
+    json_compatible_results = process_image(fileb, routers.solve_q13)
+    return JSONResponse(content=json_compatible_results)
+
+
 @router.post("/solve/q14", tags=["solve"])
 async def solve_q14(fileb: UploadFile = File(...)):
     json_compatible_results = process_image(fileb, routers.solve_q14)
