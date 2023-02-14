@@ -11,5 +11,6 @@ from routers.q11_20.q13 import solve as solve_q13
 from routers.q11_20.q14 import solve as solve_q14
 from routers.q11_20.q15 import solve as solve_q15
 from routers.q11_20.q16 import solve as solve_q16
+from routers.q11_20.q17 import solve as solve_q17
 
 from routers.q21_30.q23 import solve as solve_q23
