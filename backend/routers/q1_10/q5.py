@@ -146,8 +146,7 @@ def solve(file_path: str, save_dir: str = "files/"):
 
 
 if __name__ == "__main__":
-    # sample_path = "../../files/sample/imori.jpeg"
-	sample_path = "../../files/a.png"
+	sample_path = "../../files/sample/imori.jpeg"
 	save_dir = "../../files/"
 	result_path = save_dir + solve(sample_path, save_dir)["path"]
 
