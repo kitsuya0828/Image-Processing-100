@@ -27,7 +27,7 @@ import { titleJa } from "../Info";
 import { useUserStore } from "../stores/userStore";
 import shallow from "zustand/shallow";
 import Link from "next/link";
-import { useMediaQuery } from "@mantine/hooks";
+import { useClickOutside, useMediaQuery } from "@mantine/hooks";
 
 const mockdata = [
   {
@@ -137,7 +137,7 @@ const useStyles = createStyles((theme) => ({
 
 export const NavbarNested = () => {
   const { classes } = useStyles();
-  const sm = useMediaQuery("(min-width: 768px)")
+  const sm = useMediaQuery("(min-width: 768px)");
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   const { navbarOpened, setNavbarOpened } = useUserStore(
@@ -147,9 +147,10 @@ export const NavbarNested = () => {
     }),
     shallow
   );
+  const ref = useClickOutside(() => setNavbarOpened(false));
 
   return navbarOpened ? (
-    <Navbar style={{ width: sm ? "250px" : "80vw", height: "100svh" }} p="md" className={classes.navbar}>
+    <Navbar style={{ width: sm ? "250px" : "80vw", height: "100svh" }} p="md" className={classes.navbar} ref={ref}>
       <Navbar.Section className={classes.header}>
         <Flex justify="flex-end" direction="row" wrap="wrap">
           <ActionIcon onClick={() => setNavbarOpened(false)}>
