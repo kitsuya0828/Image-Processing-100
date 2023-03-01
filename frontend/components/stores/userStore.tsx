@@ -9,7 +9,7 @@ interface UserState {
 
 export const useUserStore = create<UserState>((set) => ({
   questionNumber: 1,
-  navbarOpened: true,
+  navbarOpened: false,
   setQuestionNumber: (x: number) =>
     set((state) => ({
       ...state,
