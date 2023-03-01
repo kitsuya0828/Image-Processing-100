@@ -36,6 +36,13 @@ export const titleEn = [
     "Histogram Normalization",
     "Histogram Operation",
     "Histogram Equalization",
+    "Gamma Correction",
+    "Nearest Neighbor Interpolation",
+    "Bi-linear Interpolation",
+    "Bi-cubic Interpolation",
+    "Affine transformation (Translation)",
+    "Affine transformation (Scaling)",
+    "Affine transformation (Rotation)"
 ];
 
 export const titleJa = [
@@ -62,6 +69,13 @@ export const titleJa = [
     "ヒストグラム正規化",
     "ヒストグラム操作",
     "ヒストグラム平坦化",
+    "ガンマ補正",
+    "最近傍補間",
+    "Bi-linear補間",
+    "Bi-cubic補間",
+    "アフィン変換（平行移動）",
+    "アフィン変換（拡大縮小）",
+    "アフィン変換（回転）",
 ];
 
 const urlJa = [
@@ -88,6 +102,13 @@ const urlJa = [
     "Question_21_30#q21-ヒストグラム正規化",
     "Question_21_30#q22-ヒストグラム操作",
     "Question_21_30#q23-ヒストグラム平坦化",
+    "Question_21_30#q24-ガンマ補正",
+    "Question_21_30#q25-最近傍補間",
+    "Question_21_30#q26-bi-linear補間",
+    "Question_21_30#q27-bi-cubic補間",
+    "Question_21_30#q28-アフィン変換平行移動",
+    "Question_21_30#q29-アフィン変換拡大縮小",
+    "uestion_21_30#q30-アフィン変換回転",
 ];
 
 export const Info = () => {
