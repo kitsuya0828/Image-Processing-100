@@ -14,7 +14,7 @@ export const App = () => {
   return (
     <AppShell
       padding="md"
-      navbar={sm ? <NavbarNested /> : <></>}
+      navbar={<NavbarNested />}
       // header={<Header height={60} p="xs">{/* Header content */}</Header>}
       styles={(theme) => ({
         main: {
