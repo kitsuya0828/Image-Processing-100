@@ -46,7 +46,7 @@ def solve(file_path: str, save_dir: str = "files/"):
     img_result = gaussian_filter(img)
 
     dt_now = datetime.datetime.now()
-    save_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S')}.jpg"
+    save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"
     cv2.imwrite(save_dir + save_path, img_result)
     return {"path": save_path}
 

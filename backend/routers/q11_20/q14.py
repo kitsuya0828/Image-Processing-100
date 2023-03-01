@@ -50,9 +50,9 @@ def solve(file_path: str, save_dir: str = "files/"):
     img_result_v, img_result_h = difference_filter(img)
 
     dt_now = datetime.datetime.now()
-    save_path_v = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S_v')}.jpg"
+    save_path_v = f"{dt_now.strftime('%Y%m%d%H%M%S_v')}.jpg"
     cv2.imwrite(save_dir + save_path_v, img_result_v)
-    save_path_h = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S_h')}.jpg"
+    save_path_h = f"{dt_now.strftime('%Y%m%d%H%M%S_h')}.jpg"
     cv2.imwrite(save_dir + save_path_h, img_result_h)
     return {"path": save_path_v}
 

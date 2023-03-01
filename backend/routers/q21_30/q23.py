@@ -30,9 +30,9 @@ def solve(file_path: str, save_dir: str = "files/"):
     img_result = hist_equal(img)
 
     dt_now = datetime.datetime.now()
-    save_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S')}.jpg"
+    save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"
     cv2.imwrite(save_dir + save_path, img_result)
-    hist_path = f"{dt_now.strftime('%Y-%m-%d_%H:%M:%S_hist')}.jpg"
+    hist_path = f"{dt_now.strftime('%Y%m%d%H%M%S_hist')}.jpg"
     plt.hist(img_result.ravel(), bins=255, rwidth=0.8, range=(0, 255))
     plt.savefig(save_dir + hist_path)
     return {"path": save_path}

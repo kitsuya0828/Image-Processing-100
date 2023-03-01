@@ -7,7 +7,7 @@ My solution to [ryoppippi/Gasyori100knock](https://github.com/ryoppippi/Gasyori1
 
 
 # Docker (Frontend + Backend)
-[![Frontend](https://skillicons.dev/icons?i=docker)](https://skillicons.dev)
+[![Docker](https://skillicons.dev/icons?i=docker)](https://skillicons.dev)
 ```bash
 docker-compose up
 ```
@@ -23,12 +23,28 @@ yarn dev
 ```
 
 ## Backend
-[![My Skills](https://skillicons.dev/icons?i=python,fastapi)](https://skillicons.dev)
+[![Backend](https://skillicons.dev/icons?i=python,fastapi)](https://skillicons.dev)
 ```bash
 cd backend
 python -m venv venv
+
+# (Recommended) Switch Python version to 3.9.xx
+pyenv install 3.9.13
+pyenv local 3.9.13
+
+# Mac
 . venv/bin/activate
 
-pip install requirements.txt
+# Windows (Powershell)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+.\venv\Scripts\Activate.ps1
+
+pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
+
+> **コードレビューをしてくださる方へ**
+>
+> 単体でPythonプログラムの実行をしたい場合は、`/backend/`ディレクトリで上記の**Backend**の設定のうち、Fast APIサーバーを起動する`uvicorn ~`以外を行っていただきたいです。
+>
+> `/backend/routers/q1_10/q7.py`のようにファイル分けされているので、該当ディレクトリに移動して`python q7.py`のようにコマンドで実行できます。
