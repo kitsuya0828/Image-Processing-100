@@ -4,30 +4,24 @@ import cv2
 import datetime
 from PIL import Image
 
-
-def hist_equal(img: np.ndarray, z_max: int=255):
-	H, W, C = img.shape
-	S = H * W * C
-
+def hist_normalization(img: np.ndarray, a: int=0, b: int=255):
 	out = img.copy()
 
-	sum_h = 0
+	c = img.min()
+	d = img.max()
 
-	for i in range(1, 255):
-		ind = np.where(img == i)
-		sum_h += len(img[ind])
-		z_prime = z_max / S * sum_h
-		out[ind] = z_prime
-
-	out = out.astype(np.uint8)
-
+	# 正規化
+	out = (b - a) / (d - c) * (img - c) + a
+	out[out < a] = a	# b > a ならFalse
+	out[out > b] = b
+	
 	return out
 
 
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = hist_equal(img)
+    img_result = hist_normalization(img)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"
@@ -39,7 +33,7 @@ def solve(file_path: str, save_dir: str = "files/"):
 
 
 if __name__ == "__main__":
-    sample_path = "../../files/sample/imori.jpeg"
+    sample_path = "../../files/sample/imori_dark.jpeg"
     save_dir = "../../files/"
     result_path = save_dir + solve(sample_path, save_dir)["path"]
     hist_path = result_path.replace(".jpg", "_hist.jpg")
