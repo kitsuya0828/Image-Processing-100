@@ -35,7 +35,7 @@ pyenv local 3.9.13
 # Mac
 . venv/bin/activate
 
-# Windows (Powershell)
+# Windows (PowerShell)
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 .\venv\Scripts\Activate.ps1
 

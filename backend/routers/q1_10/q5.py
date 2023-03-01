@@ -65,7 +65,7 @@ def HSV2BGR(_img: np.ndarray, hsv: np.ndarray):
 
 	return out
 
-# 自分の解答（処理速度が遅い）
+# 自分の解答（処理速度が遅かった）
 # def BGR2HSV(_img: np.ndarray):
 # 	img = _img.copy() / 255.
 
