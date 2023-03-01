@@ -11,14 +11,9 @@ import {
   Flex,
 } from "@mantine/core";
 import {
-  IconNotes,
-  IconCalendarStats,
-  IconGauge,
+  IconCircleCheck,
+  IconCircleDashed,
   IconChevronLeft,
-  IconPresentationAnalytics,
-  IconFileAnalytics,
-  IconAdjustments,
-  IconLock,
   IconBrandGithub,
   IconChevronRight,
 } from "@tabler/icons";
@@ -32,12 +27,12 @@ import { useClickOutside, useMediaQuery } from "@mantine/hooks";
 const mockdata = [
   {
     label: "問題1-10",
-    icon: IconGauge,
+    icon: IconCircleCheck,
     links: [...Array(10)].map((_, num) => ({ label: titleJa[num], link: (num + 1).toString() })),
   },
   {
     label: "問題11-20",
-    icon: IconGauge,
+    icon: IconCircleCheck,
     links: [...Array(10)].map((_, num) => ({
       label: titleJa[num + 10],
       link: (num + 11).toString(),
@@ -45,7 +40,7 @@ const mockdata = [
   },
   {
     label: "問題21-30",
-    icon: IconGauge,
+    icon: IconCircleCheck,
     links: [...Array(10)].map((_, num) => ({
       label: titleJa[num + 20],
       link: (num + 21).toString(),
@@ -53,35 +48,20 @@ const mockdata = [
   },
   {
     label: "問題31-40",
-    icon: IconCalendarStats,
-    links: [
-      { label: "Upcoming releases", link: "/" },
-      { label: "Previous releases", link: "/" },
-      { label: "Releases schedule", link: "/" },
-    ],
+    icon: IconCircleDashed,
   },
-  { label: "問題41-50", icon: IconFileAnalytics },
-  { label: "問題51-60", icon: IconAdjustments },
+  { label: "問題41-50", icon: IconCircleDashed },
+  { label: "問題51-60", icon: IconCircleDashed },
   {
     label: "問題61-70",
-    icon: IconLock,
-    links: [
-      { label: "Enable 2FA", link: "/" },
-      { label: "Change password", link: "/" },
-      { label: "Recovery codes", link: "/" },
-    ],
+    icon: IconCircleDashed,
   },
   {
     label: "問題71-80",
-    icon: IconLock,
-    links: [
-      { label: "Enable 2FA", link: "/" },
-      { label: "Change password", link: "/" },
-      { label: "Recovery codes", link: "/" },
-    ],
+    icon: IconCircleDashed,
   },
-  { label: "問題81-90", icon: IconFileAnalytics },
-  { label: "問題91-100", icon: IconAdjustments },
+  { label: "問題81-90", icon: IconCircleDashed },
+  { label: "問題91-100", icon: IconCircleDashed },
 ];
 
 const useStyles = createStyles((theme) => ({
@@ -150,7 +130,12 @@ export const NavbarNested = () => {
   const ref = useClickOutside(() => setNavbarOpened(false));
 
   return navbarOpened ? (
-    <Navbar style={{ width: sm ? "250px" : "80vw", height: "100svh" }} p="md" className={classes.navbar} ref={ref}>
+    <Navbar
+      style={{ width: sm ? "250px" : "80vw", height: "100svh" }}
+      p="md"
+      className={classes.navbar}
+      ref={ref}
+    >
       <Navbar.Section className={classes.header}>
         <Flex justify="flex-end" direction="row" wrap="wrap">
           <ActionIcon onClick={() => setNavbarOpened(false)}>
