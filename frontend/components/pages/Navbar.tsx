@@ -7,19 +7,26 @@ import {
   Title,
   UnstyledButton,
   Text,
+  ActionIcon,
+  Flex,
 } from "@mantine/core";
 import {
   IconNotes,
   IconCalendarStats,
   IconGauge,
+  IconChevronLeft,
   IconPresentationAnalytics,
   IconFileAnalytics,
   IconAdjustments,
   IconLock,
   IconBrandGithub,
+  IconChevronRight,
 } from "@tabler/icons";
 import { LinksGroup } from "./NavbarLinksGroup";
 import { titleJa } from "../Info";
+import { useUserStore } from "../stores/userStore";
+import shallow from "zustand/shallow";
+import Link from "next/link";
 
 const mockdata = [
   {
@@ -131,13 +138,33 @@ export const NavbarNested = () => {
   const { classes } = useStyles();
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
-  return (
+  const { navbarOpened, setNavbarOpened } = useUserStore(
+    (state) => ({
+      navbarOpened: state.navbarOpened,
+      setNavbarOpened: state.setNavbarOpened,
+    }),
+    shallow
+  );
+
+  return navbarOpened ? (
     <Navbar width={{ sm: 250 }} p="md" className={classes.navbar}>
       <Navbar.Section className={classes.header}>
+        <Flex justify="flex-end" direction="row" wrap="wrap">
+          <ActionIcon onClick={() => setNavbarOpened(false)}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Flex>
         <Group position="apart">
-          <Title size={30} variant="gradient" gradient={{ from: "indigo", to: "cyan", deg: 45 }}>
-            Image Processing 100 Questions
-          </Title>
+          <Link
+            href={{
+              pathname: "/",
+            }}
+            style={{ textDecoration: "none" }}
+          >
+            <Title size={30} variant="gradient" gradient={{ from: "indigo", to: "cyan", deg: 45 }}>
+              Image Processing 100 Questions
+            </Title>
+          </Link>
         </Group>
       </Navbar.Section>
 
@@ -161,5 +188,9 @@ export const NavbarNested = () => {
         </UnstyledButton>
       </Navbar.Section>
     </Navbar>
+  ) : (
+    <ActionIcon onClick={() => setNavbarOpened(true)}>
+      <IconChevronRight />
+    </ActionIcon>
   );
 };
