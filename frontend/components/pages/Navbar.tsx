@@ -149,7 +149,7 @@ export const NavbarNested = () => {
   );
 
   return navbarOpened ? (
-    <Navbar style={{ width: sm ? "250px" : "80vw" }} p="md" className={classes.navbar}>
+    <Navbar style={{ width: sm ? "250px" : "80vw", height: "100svh" }} p="md" className={classes.navbar}>
       <Navbar.Section className={classes.header}>
         <Flex justify="flex-end" direction="row" wrap="wrap">
           <ActionIcon onClick={() => setNavbarOpened(false)}>
