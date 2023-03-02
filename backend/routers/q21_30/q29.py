@@ -37,29 +37,41 @@ def affine(img: np.ndarray, a: float=1, b: float=0, c: float=0, d: float=1, tx: 
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = affine(img, a=1, b=0, c=0, d=1, tx=30, ty=-30)
+    img_result_1 = affine(img, a=1.3, b=0, c=0, d=0.8, tx=0, ty=0)
+
+    img_result_2 = affine(img_result_1, a=1, b=0, c=0, d=1, tx=30, ty=-30)
 
     dt_now = datetime.datetime.now()
-    save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"
-    cv2.imwrite(save_dir + save_path, img_result)
-    return {"path": save_path}
+    save_path_1 = f"{dt_now.strftime('%Y%m%d%H%M%S_1')}.jpg"
+    cv2.imwrite(save_dir + save_path_1, img_result_1)
+    save_path_2 = f"{dt_now.strftime('%Y%m%d%H%M%S_2')}.jpg"
+    cv2.imwrite(save_dir + save_path_2, img_result_2)
+    return {"path": save_path_1}
 
 
 if __name__ == "__main__":
 	sample_path = "../../files/sample/imori.jpeg"
 	save_dir = "../../files/"
-	result_path = save_dir + solve(sample_path, save_dir)["path"]
+	result_path_1 = save_dir + solve(sample_path, save_dir)["path"]
+	result_path_2 = result_path_1.replace("_1", "_2")
 
 	plt.figure(figsize=(12, 3))
-	plt.subplot(1, 2, 1)
+	plt.subplot(1, 3, 1)
 	plt.title('input')
 	sample_image = Image.open(sample_path)
 	sample_array = np.asarray(sample_image)
 	plt.imshow(sample_array)
 
-	plt.subplot(1, 2, 2)
-	plt.title('output')
-	result_image = Image.open(result_path)
-	result_array = np.asarray(result_image)
-	plt.imshow(result_array)
+	plt.subplot(1, 3, 2)
+	plt.title('output (1)')
+	result_image_1 = Image.open(result_path_1)
+	result_array_1 = np.asarray(result_image_1)
+	plt.imshow(result_array_1)
+
+	plt.subplot(1, 3, 3)
+	plt.title('output (2)')
+	result_image_2 = Image.open(result_path_2)
+	result_array_2 = np.asarray(result_image_2)
+	plt.imshow(result_array_2)
+
 	plt.show()

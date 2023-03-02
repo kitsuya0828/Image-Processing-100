@@ -26,3 +26,5 @@ from routers.q21_30.q25 import solve as solve_q25
 from routers.q21_30.q26 import solve as solve_q26
 from routers.q21_30.q27 import solve as solve_q27
 from routers.q21_30.q28 import solve as solve_q28
+from routers.q21_30.q29 import solve as solve_q29
+from routers.q21_30.q30 import solve as solve_q30

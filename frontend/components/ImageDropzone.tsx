@@ -7,6 +7,7 @@ import shallow from "zustand/shallow";
 
 const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/`;
 const switchableQuestionNumbers = [14, 15, 16];
+const multipleQuestionNumbers = [29, 30];
 const histgramQuestionNumbers = [21, 22, 23];
 
 export const ImageDropzone = (props: Partial<DropzoneProps>) => {
@@ -20,6 +21,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
   );
 
   const isSwitchable = switchableQuestionNumbers.includes(questionNumber);
+  const isMultiple = multipleQuestionNumbers.includes(questionNumber);
   const isHistgram = histgramQuestionNumbers.includes(questionNumber);
 
   const [beforeUrl, setBeforeUrl] = useState("");
@@ -36,8 +38,8 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
     } else {
       setBeforeUrl(`${url}sample/imori.jpeg`);
     }
-    setAfterUrl(`${url}sample/q${questionNumber}${isSwitchable ? "_v" : ""}.jpg`);
-  }, [isSwitchable, questionNumber]);
+    setAfterUrl(`${url}sample/q${questionNumber}${isSwitchable ? "_v" : isMultiple ? "_1" : ""}.jpg`);
+  }, [isSwitchable, questionNumber, isMultiple]);
 
   const endpoint = `solve/q${questionNumber}`;
 
@@ -83,6 +85,16 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
                 src={afterUrl.replace("_v", "_h")}
                 caption="After (Horizontal)"
                 alt="After (Horizontal)"
+              />
+            </>
+          ) : isMultiple ? (
+            <>
+              <Image radius="md" src={afterUrl} caption="After (1)" alt="After (1)" />
+              <Image
+                radius="md"
+                src={afterUrl.replace("_1", "_2")}
+                caption="After (2)"
+                alt="After (2)"
               />
             </>
           ) : isHistgram ? (
