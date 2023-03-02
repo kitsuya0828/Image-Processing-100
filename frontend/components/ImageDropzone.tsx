@@ -73,7 +73,7 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
         <Text size="xs" color="dimmed" inline>
           Drag an image here or click to select a file
         </Text>
-        <SimpleGrid cols={isSwitchable || isHistgram ? 3 : 2}>
+        <SimpleGrid cols={isSwitchable || isHistgram || isMultiple ? 3 : 2}>
           <Image radius="md" src={beforeUrl} caption="Before" alt="Before" />
           {loading ? (
             <LoadingOverlay transitionDuration={500} visible={true} />
