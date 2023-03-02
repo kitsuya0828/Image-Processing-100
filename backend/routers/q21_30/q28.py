@@ -4,7 +4,7 @@ import cv2
 import datetime
 from PIL import Image
 
-def affine(img: np.ndarray, a: float=1, b: float=0, c: float=0, d: float=1, tx: int = 30, ty: int = -30):
+def affine(img: np.ndarray, a: float=1, b: float=0, c: float=0, d: float=1, tx: int = 0, ty: int = 0):
 	H, W, C = img.shape
 
 	# 外枠を黒で囲んだ元画像
@@ -35,7 +35,7 @@ def affine(img: np.ndarray, a: float=1, b: float=0, c: float=0, d: float=1, tx: 
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = affine(img)
+    img_result = affine(img, a=1, b=0, c=0, d=1, tx=30, ty=-30)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"
