@@ -31,6 +31,8 @@ export const ImageDropzone = (props: Partial<DropzoneProps>) => {
       setBeforeUrl(`${url}sample/imori_noise.jpeg`);
     } else if ([20, 21, 22].includes(questionNumber)) {
       setBeforeUrl(`${url}sample/imori_dark.jpeg`);
+    } else if (questionNumber === 24) {
+      setBeforeUrl(`${url}sample/imori_gamma.jpeg`);
     } else {
       setBeforeUrl(`${url}sample/imori.jpeg`);
     }
