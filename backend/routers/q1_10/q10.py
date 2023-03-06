@@ -5,7 +5,7 @@ import datetime
 from PIL import Image
 
 
-def gaussian_filter(img: np.ndarray, kernel_size: int=3):
+def median_filter(img: np.ndarray, kernel_size: int=3):
 	if len(img.shape) == 3:
 		H, W, C = img.shape
 	else:
@@ -34,7 +34,7 @@ def gaussian_filter(img: np.ndarray, kernel_size: int=3):
 def solve(file_path: str, save_dir: str = "files/"):
     img = cv2.imread(file_path)
 
-    img_result = gaussian_filter(img)
+    img_result = median_filter(img)
 
     dt_now = datetime.datetime.now()
     save_path = f"{dt_now.strftime('%Y%m%d%H%M%S')}.jpg"

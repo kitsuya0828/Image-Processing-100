@@ -4,7 +4,7 @@ import cv2
 import datetime
 from PIL import Image
 
-def gamma_correct(img: np.ndarray, c: int=1, g: int=2.2):
+def gamma_correct(img: np.ndarray, c: int=1, g: float=2.2):
 	out = img.copy() / 255
 
 	out = (out / c)**(1 / g)
